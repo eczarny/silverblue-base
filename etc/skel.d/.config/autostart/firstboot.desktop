@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fedora Silverblue Setup
+Comment=Sets up a custom a Fedora Silverblue installation on first boot
+Exec=/usr/bin/firstboot
+Icon=org.gnome.Terminal
+Type=Application
+Categories=Utility;System;
+Name[en_US]=startup
