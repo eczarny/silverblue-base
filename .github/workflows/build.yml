@@ -104,7 +104,6 @@ jobs:
       - name: Write signing key to disk
         run: |
           echo "${{ env.COSIGN_PRIVATE_KEY }}" > cosign.key
-          # DEBUG: get character count of key
           wc -c cosign.key
         env:
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
@@ -118,7 +117,7 @@ jobs:
 
       - name: Sign image
         run: |
-          cosign sign --key cosign.key ${{ steps.registry_case.outputs.lowercase }}/${{ env.IMAGE_NAME }}@${TAGS}
+          cosign sign --key cosign.key -y ${{ steps.registry_case.outputs.lowercase }}/${{ env.IMAGE_NAME }}@${TAGS}
         env:
           TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
