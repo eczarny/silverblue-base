@@ -6,6 +6,8 @@ COPY etc /etc
 COPY firstboot /usr/bin
 
 RUN rpm-ostree override remove firefox firefox-langpacks && \
+    rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
+    rpm-ostree install code docker fish && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable flatpak-automatic.timer && \
