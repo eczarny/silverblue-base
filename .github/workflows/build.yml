@@ -34,9 +34,6 @@ jobs:
           - major_version: 37
             is_latest: true
             is_stable: true
-          - major_version: 38
-            is_latest: true
-            is_stable: false
     steps:
       - name: Checkout silverblue-base
         uses: actions/checkout@v3
