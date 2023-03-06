@@ -78,14 +78,15 @@ jobs:
           oci: false
 
       - name: Generate image registry
-        id: image_registry
+        if: github.event_name != 'pull_request'
         uses: ASzc/change-string-case-action@v5
+        id: image_registry
         with:
           string: ${{ env.IMAGE_REGISTRY }}
 
       - name: Push image to registry
-        uses: redhat-actions/push-to-registry@v2
         if: github.event_name != 'pull_request'
+        uses: redhat-actions/push-to-registry@v2
         id: push
         env:
           REGISTRY_USER: ${{ github.actor }}
@@ -108,15 +109,17 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
         if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: sigstore/cosign-installer@v3.0.1
+        if: github.event_name != 'pull_request'
+
       - name: Sign image
-        uses: sigstore/cosign-installer@main
         if: github.event_name != 'pull_request'
         run: |
           cosign sign --key cosign.key -y ${{ steps.image_registry.outputs.lowercase }}/${{ env.IMAGE_NAME }}@${TAGS}
