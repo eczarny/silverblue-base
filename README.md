@@ -4,7 +4,7 @@
 
 A personalized [OSTree native container](https://fedoraproject.org/wiki/Changes/OstreeNativeContainerStable) image for use with [Fedora Silverblue](https://silverblue.fedoraproject.org/).
 
-This image is based entirely on the [uBlue](https://ublue.it/) base image found [here](https://artifacthub.io/packages/container/ublue/base). If you want to learn a bit more check out [this article](https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/) from the uBlue author.
+This image is based entirely on the [uBlue](https://ublue.it/) main image found [here](https://github.com/ublue-os/main). If you want to learn a bit more check out [this article](https://www.ypsidanger.com/building-your-own-fedora-silverblue-image/) from the uBlue author.
 
 ## Usage
 
