@@ -7,7 +7,7 @@ COPY firstboot /usr/bin
 
 RUN rpm-ostree override remove firefox firefox-langpacks && \
     rpm --import https://packages.microsoft.com/keys/microsoft.asc && \
-    rpm-ostree install code fish && \
+    rpm-ostree install code fish podman-compose && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable flatpak-automatic.timer && \
