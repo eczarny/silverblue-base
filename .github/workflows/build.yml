@@ -15,8 +15,8 @@ on:
       - '**.md'
 
 env:
-    IMAGE_NAME: silverblue-base
-    IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  IMAGE_NAME: silverblue-base
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
 
 jobs:
   push:
